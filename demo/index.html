@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PDF to Images</title>
+</head>
+<body>
+    <input id="pdf-input" type="file">    
+</body>
+<script src="/demo/pdf.worker.min.js"></script>
+<script>
+    const fileEle = document.querySelector('#pdf-input');
+    fileEle.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+        pdf2img.getImageUrls(file, 1)
+            .then((urls) => {
+                for (let i = 0; i < urls.length; i++) {
+                    const img = document.createElement('img')
+                    img.src = urls[i]
+                    document.getElementsByTagName('body')[0].appendChild(img)
+                }
+            })        
+    }, false)
+</script>
+</html>
