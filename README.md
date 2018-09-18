@@ -8,8 +8,8 @@
 首先需要引入pdf.js库和pdf.worker.js库
 ```html
 <!-- 二者的版本必须一致 -->
-<script src="./pdf.min.js">
-<script src="./pdf.worker.min.js"> 
+<script src="./pdf.min.js"></script>
+<script src="./pdf.worker.min.js"></script>
 ```
 接着引入pdf2imgjs库,支持es6和script标签方式引入, 标签方式引入暴露全局变量`pdf2img`,
 npm 安装
