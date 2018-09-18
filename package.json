@@ -1,5 +1,5 @@
 {
-  "name": "pdf2img",
+  "name": "pdf2imgjs",
   "version": "1.0.0",
   "description": "convert pdf file to images",
   "main": "./dist/pdf2img.min.js",

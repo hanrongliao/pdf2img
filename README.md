@@ -11,22 +11,22 @@
 <script src="./pdf.min.js">
 <script src="./pdf.worker.min.js"> 
 ```
-接着引入pdf2img库,支持es6和script标签方式引入, 标签方式引入暴露全局变量pdf2img,
+接着引入pdf2imgjs库,支持es6和script标签方式引入, 标签方式引入暴露全局变量`pdf2img`,
 npm 安装
 ```bash
-npm i pdf2img --save
+npm i pdf2imgjs --save
 ```
 引入
 ```js
-import pdf2img from 'pdf2img'
+import pdf2img from 'pdf2imgjs'
 ```
 或
 ```html
-<script src="./pdf2img.min.js">
+<script src="./pdf2imgjs.min.js">
 ```
 
 ### 使用
-pdf2img暴露两个方法,两个方法都只接受一个file对象参数, 返回为一个promise对象, 通过promise的then方法获取返回值
+pdf2imgjs暴露两个方法,两个方法都只接受一个file对象参数, 返回为一个promise对象, 通过promise的then方法获取返回值
 1. `getImageUrls`, 返回按pdf页码为顺序的图片url
 2. `getImageObjects` 返回以pdf页码为顺序的图片blob对象
 
