@@ -26,7 +26,7 @@ import pdf2img from 'pdf2imgjs'
 ```
 
 ### 使用
-pdf2imgjs暴露两个方法,两个方法都只接受一个file对象参数, 返回为一个promise对象, 通过promise的then方法获取返回值
+pdf2imgjs暴露两个方法,两个方法都接受一个file对象,开始页码和结束页码, file参数为必须， 返回为一个promise对象, 通过promise的then方法获取返回值
 1. `getImageUrls`, 返回按pdf页码为顺序的图片url
 2. `getImageObjects` 返回以pdf页码为顺序的图片blob对象
 
