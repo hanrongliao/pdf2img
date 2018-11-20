@@ -22,13 +22,16 @@ const page2canvas = (doc, index) => {
         })
 }
 
-const pdf2blob = (file) => {
-    const url =  URL.createObjectURL(file)    
+const pdf2blob = (file, startPage, endPage) => {
+    const url =  URL.createObjectURL(file)
     return pdfjsLib.getDocument(url)
         .then((doc) => {
             const total = doc.numPages
+            if (startPage > total) return Promise.resolve([])
             const canvasList = []
-            for (let i = 1; i <= total; i++) {
+            const  start = startPage || 1
+            const  end = endPage || total
+            for (let i = start; i <= end; i++) {
                 canvasList.push(page2canvas(doc, i))
             }
             return Promise.all(canvasList)
@@ -44,8 +47,8 @@ const pdf2blob = (file) => {
         })
 }
 
-const getImageUrls = (file) => {
-    return pdf2blob(file)
+const getImageUrls = (file, startPage = 1, endPage) => {
+    return pdf2blob(file, startPage, endPage)
         .then((bList) => {
             const urls = []
             for(let i = 0; i < bList.length; i++) {
@@ -55,8 +58,8 @@ const getImageUrls = (file) => {
         })
 }
 
-const getImageObjects = (file) => {
-    return pdf2blob(file)
+const getImageObjects = (file, startPage = 1, endPage) => {
+    return pdf2blob(file, startPage, endPage)
 }
 
 export default {
