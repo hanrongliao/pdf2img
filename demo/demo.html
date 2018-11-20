@@ -15,7 +15,7 @@
     const fileEle = document.querySelector('#pdf-input');
     fileEle.addEventListener('change', (event) => {
         const file = event.target.files[0]
-        pdf2img.getImageUrls(file, 1)
+        pdf2img.getImageUrls(file)
             .then((urls) => {
                 for (let i = 0; i < urls.length; i++) {
                     const img = document.createElement('img')
