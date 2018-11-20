@@ -35,6 +35,5 @@
     "webpack-hot-middleware": "^2.24.0"
   },
   "dependencies": {
-    "pdfjs-dist": "^2.0.489"
   }
 }
