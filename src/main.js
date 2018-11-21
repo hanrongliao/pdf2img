@@ -2,7 +2,7 @@ const canvas2file = (canvas) => {
     return new Promise((resolve) => {
         canvas.toBlob((blob) => {
             resolve(blob)
-        })
+        }, "image/jpeg", 2)
     })
 }
 
@@ -11,7 +11,7 @@ const page2canvas = (doc, index) => {
         .then((page) => {
             const canvas = document.createElement('canvas')
             const canvasContext = canvas.getContext('2d')
-            const viewport = page.getViewport(1)
+            const viewport = page.getViewport(1.5)
             canvas.height = viewport.height
             canvas.width = viewport.width
             const ctx = { canvasContext, viewport }
