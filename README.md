@@ -26,9 +26,17 @@ import pdf2img from 'pdf2imgjs'
 ```
 
 ### 使用
-pdf2imgjs暴露两个方法,两个方法都接受一个file对象,开始页码和结束页码, file参数为必须， 返回为一个promise对象, 通过promise的then方法获取返回值
-1. `getImageUrls`, 返回按pdf页码为顺序的图片url
-2. `getImageObjects` 返回以pdf页码为顺序的图片blob对象
+pdf2imgjs暴露两个方法,两个方法都接受一个file对象, options对象, file参数为必须， 返回为一个promise对象, 通过promise的then方法获取返回值
+
+`options`对象包含四个可选参数
+```js
+startPage: 1,
+endPage: 1, // 默认文件的最大页数
+scale: 2, // 图片放大系数, 默认2
+quality: 2, // 图片质量系数, 默认2
+```
+1. `getImageUrls`, 返回 `{ urls: [], totalPage: 1 }`, urls为图片链接
+2. `getImageObjects` 返回以`{ bList: [], totalPage }`, bList元素图片的blob对象
 
 ### 示例
 ```html
@@ -39,7 +47,7 @@ pdf2imgjs暴露两个方法,两个方法都接受一个file对象,开始页码�
     fileEle.addEventListener('change', (event) => {
         const file = event.target.files[0]
         pdf2img.getImageUrls(file, 1)
-            .then((urls) => {
+            .then(({ urls }) => {
                 for (let i = 0; i < urls.length; i++) {
                     const img = document.createElement('img')
                     img.src = urls[i]

@@ -4,6 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>PDF to Images</title>
+    <style>
+        img{
+            width: 850px;
+        }
+    </style>
 </head>
 <body>
     <input id="pdf-input" type="file">    
@@ -13,8 +18,16 @@
     const fileEle = document.querySelector('#pdf-input')
     fileEle.addEventListener('change', (event) => {
         const file = event.target.files[0]
-        pdf2img.getImageUrls(file, 1, 10)
-            .then((urls) => {
+        const options = {
+            startPage: 1,
+            endPage: 10,
+            scale: 6,
+            quality: 10,
+        }
+        pdf2img.getImageUrls(file, options)
+            .then((res) => {
+                console.log(res)
+                const urls = res.urls
                 for (let i = 0; i < urls.length; i++) {
                     const img = document.createElement('img')
                     img.src = urls[i]
