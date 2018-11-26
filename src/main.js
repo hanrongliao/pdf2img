@@ -28,7 +28,7 @@ const pdf2blob = (file, options) => {
     return pdfjsLib.getDocument(url)
         .then((doc) => {
             const totalPage = doc.numPages
-            if (startPage > totalPage) return Promise.resolve([])
+            if (startPage > totalPage || endPage > totalPage) return Promise.resolve([])
             const canvasList = []
             const  start = startPage || 1
             const  end = endPage || total
